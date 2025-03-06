@@ -9,12 +9,16 @@ class Window:
 
         # root widget
         self.__root_widget = Tk()
-        self.__root_widget.title = "Maze Solver"
+        self.__root_widget.title("Maze Solver")
         self.__root_widget.protocol("WM_DELETE_WINDOW", self.close)
 
         # canvas widget
-        self.__canvas_widget = Canvas(master=self.__root_widget)
-        self.__canvas_widget.pack()
+        self.__canvas_widget = Canvas(
+            master = self.__root_widget,
+            bg = "white",
+            height = height,
+            width = width)
+        self.__canvas_widget.pack(fill = BOTH, expand = 1)
 
     def redraw(self):
         self.__root_widget.update_idletasks()
