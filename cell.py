@@ -13,6 +13,12 @@ class Cell:
         self.__y_top = y_top
         self.__window = window
 
+    def center_point(self):
+        x_mid = (self.__x_left + self.__x_right) // 2
+        y_mid = (self.__y_bottom + self.__y_top) // 2
+
+        return Point(x_mid, y_mid)
+
     def draw(self):
         left_bottom = Point(self.__x_left, self.__y_bottom)
         left_top = Point(self.__x_left, self.__y_top)
@@ -30,3 +36,13 @@ class Cell:
 
         if self.has_top_wall:
             self.__window.draw_line(Line(left_top, right_top), "black")
+
+    def draw_move(self, to_cell, undo=False):
+        start_point = self.center_point()
+        end_point = to_cell.center_point()
+        color = "red"
+
+        if undo:
+            color = "gray"
+
+        self.__window.draw_line(Line(start_point, end_point), color)

@@ -37,6 +37,9 @@ def main() -> int:
     cell_6.draw()
     cell_7.draw()
 
+    cell_1.draw_move(cell_2)
+    cell_2.draw_move(cell_7, True)
+
     win.wait_for_close()
 
 if __name__ == '__main__':
