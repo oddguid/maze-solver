@@ -2,7 +2,7 @@ from point import Point
 from line import Line
 
 class Cell:
-    def __init__(self, x_left, x_right, y_bottom, y_top, window):
+    def __init__(self, x_left, x_right, y_bottom, y_top, window=None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -20,6 +20,9 @@ class Cell:
         return Point(x_mid, y_mid)
 
     def draw(self):
+        if self.__window is None:
+            return
+
         left_bottom = Point(self.__x_left, self.__y_bottom)
         left_top = Point(self.__x_left, self.__y_top)
         right_bottom = Point(self.__x_right, self.__y_bottom)
@@ -38,6 +41,9 @@ class Cell:
             self.__window.draw_line(Line(left_top, right_top), "black")
 
     def draw_move(self, to_cell, undo=False):
+        if self.__window is None:
+            return
+
         start_point = self.center_point()
         end_point = to_cell.center_point()
         color = "red"
