@@ -6,13 +6,18 @@ from cell import Cell
 from maze import Maze
 
 def main() -> int:
-    win = Window(800, 600)
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
 
-    maze = Maze(100, 100, 5, 10, 20, 10, win)
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
 
-    for i in range(5):
-        for j in range(10):
-            maze._Maze__draw_cell(i, j)
+    win = Window(screen_x, screen_y)
+
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
 
     win.wait_for_close()
 
