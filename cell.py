@@ -28,17 +28,41 @@ class Cell:
         right_bottom = Point(self.__x_right, self.__y_bottom)
         right_top = Point(self.__x_right, self.__y_top)
 
+        color_black = "black"
+        color_white = "#d9d9d9"
+        color = color_black
+
+        # left wall
         if self.has_left_wall:
-            self.__window.draw_line(Line(left_bottom, left_top), "black")
+            color = color_black
+        else:
+            color = color_white
 
+        self.__window.draw_line(Line(left_bottom, left_top), color)
+
+        # right wall
         if self.has_right_wall:
-            self.__window.draw_line(Line(right_bottom, right_top), "black")
+            color = color_black
+        else:
+            color = color_white
 
+        self.__window.draw_line(Line(right_bottom, right_top), color)
+
+        # bottom wall
         if self.has_bottom_wall:
-            self.__window.draw_line(Line(left_bottom, right_bottom), "black")
+            color = color_black
+        else:
+            color = color_white
 
+        self.__window.draw_line(Line(left_bottom, right_bottom), color)
+
+        # top wall
         if self.has_top_wall:
-            self.__window.draw_line(Line(left_top, right_top), "black")
+            color = color_black
+        else:
+            color = color_white
+
+        self.__window.draw_line(Line(left_top, right_top), color)
 
     def draw_move(self, to_cell, undo=False):
         if self.__window is None:
