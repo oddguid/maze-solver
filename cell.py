@@ -7,6 +7,7 @@ class Cell:
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
         self.__x_left = x_left
         self.__x_right = x_right
         self.__y_bottom = y_bottom
